@@ -1,23 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
+import { Board } from './components/Board';
+import { getDateString, keyGen, useLocalStorage } from './util';
 
 function App() {
+  const [columns, setColumns] = useLocalStorage('appData', []);
+  const onNewColumn = (newColumnName) => {
+    const timeStamp = getDateString(new Date());
+    setColumns((columns) => [
+      ...columns,
+      {
+        name: newColumnName,
+        cards: [],
+        createdAt: timeStamp,
+        id: `column_${keyGen(newColumnName, timeStamp)}`,
+      },
+    ]);
+  };
+  const onRemoveColumn = (index) => {
+    setColumns((columns) => {
+      const clone = [...columns];
+      clone.splice(index, 1);
+      return clone;
+    });
+  };
+  const onColumnChange = (changes) => {
+    setColumns((columns) => {
+      const clone = [...columns];
+      changes.forEach(({ index, column }) => {
+        clone[index] = column;
+      });
+      return clone;
+    });
+  };
+
+  const onColumnReorder = (columns) => {
+    setColumns(columns);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Board
+        columns={columns}
+        onNewColumn={onNewColumn}
+        onRemoveColumn={onRemoveColumn}
+        onColumnChange={onColumnChange}
+        onColumnReorder={onColumnReorder}
+      ></Board>
     </div>
   );
 }

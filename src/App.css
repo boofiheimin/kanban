@@ -1,38 +1,220 @@
 .App {
-  text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.column_containers {
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, min(100%, 300px));
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.column_inner {
+  background-color: lightgray;
+  padding: 0.75rem;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.cards_container {
+  width: 100%;
+}
+
+.column_header {
+  width: 100%;
+  padding-bottom: 0.75rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.column_header_length {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: gray;
+}
+
+.column_header_name {
+  flex-grow: 1;
+}
+
+.column_header_add_button {
+  font-size: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 0.25rem;
+}
+
+.column_add_button {
+  position: relative;
+}
+
+.column_add_button_inner {
+  position: absolute;
+  background-color: gray;
   color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.column_add_button_inner:hover {
+  background-color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+.card {
+  background-color: whitesmoke;
+  padding: 0.25rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
+
+.card:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.card_item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.card_name {
+  width: 100%;
+  font-size: 1.25rem;
+  color: blue;
+}
+
+.card_date {
+  font-size: 0.75rem
+}
+
+.card_footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card_status{
+  color: white;
+  padding: 0.25rem;
+  border-radius: 5px;
+}
+
+.card_status_open {
+  background-color: green;
+}
+
+.card_status_closed {
+  background-color: red;
+}
+
+.card_item_option {
+  font-weight: bold; 
+}
+
+.button {
+  cursor: pointer;
+}
+
+.save_button {
+  color: white;
+  background-color: green;
+}
+
+.cancel_button {
+  color: white;
+  background-color: red;
+}
+
+.menu {
+  position:relative;
+}
+
+.menu_button {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.menu_items {
+  position: absolute;
+}
+
+.menu_item {
+  background-color: white;
+  padding: 0.5rem;
+  cursor: pointer;
+  border: 1px solid black;
+  z-index: 10;
+}
+
+.menu_item:hover {
+  background-color: cyan;
+}
+
+.modal {
+  position:absolute;
+  background-color: white;
+  border-radius: 5px;
+  width: min(100%, 300px);
+  outline: none;
+  left: 50%;
+  top: 1rem;
+  transform: translate(-50%, 0);
+  padding: 1rem
+}
+
+.modal > :not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.modal_title {
+  font-size: 1.5rem;
+}
+
+
+.overlay {
+  position:fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.new_column_button_row {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.new_column_button_row > :not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.form_label_value_wrapper {
+  display: flex;
+}
+
+.form_label_value_wrapper > :first-child {
+  margin-right: 1rem;
+}
+
